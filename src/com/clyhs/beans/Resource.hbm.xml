@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.clyhs.beans.Resource" table="t_resource">	
+	    
+		<id name="resourceId" column="resource_id" type="integer">
+            <generator class="native"/>
+        </id>
+ 
+        <property name="resourceName" column="resource_name" type="string" />
+
+        <property name="resourceDesc" column="resource_desc" type="string" />
+        <property name="resourceType" column="resource_type" type="string" />
+        <property name="resourceString" column="resource_string" type="string" />
+        <property name="priority" column="priority" type="boolean" precision="1" scale="0"/>
+        <property name="enabled"  column="enabled" type="integer" precision="1" scale="0" />
+        <property name="issys"    column="issys" type="integer" precision="1" scale="0" />
+        <property name="module"   column="module" type="string" />
+        <set      name="authorityResource" inverse="true" cascade="all" lazy="false">
+            <key>
+                <column name="resource_id"></column>
+            </key>
+            <one-to-many class="com.clyhs.beans.AuthorityResource"/>
+        </set>
+        
+	</class>
+	
+</hibernate-mapping>

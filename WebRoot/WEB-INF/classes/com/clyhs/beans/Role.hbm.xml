@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.clyhs.beans.Role" table="t_role">	
+	    
+		<id name="roleId" column="role_id" type="integer">
+            <generator class="native"/>
+        </id>
+ 
+        <property name="roleName" column="role_name" type="string" />
+
+        <property name="roleDesc" column="role_desc" type="string" />
+        <property name="module"   column="module" type="string" />
+        <property name="enabled"  column="enabled" type="boolean" precision="1" scale="0" />
+        <property name="issys"    column="issys" type="boolean" precision="1" scale="0" />
+        
+        <set      name="userRole" inverse="true" cascade="all" lazy="false">
+            <key>
+                <column name="role_id"></column>
+            </key>
+            <one-to-many class="com.clyhs.beans.UserRole"/>
+        </set>
+        <set      name="roleAuthority" inverse="true" cascade="all" lazy="false">
+            <key>
+                <column name="role_id"></column>
+            </key>
+            <one-to-many class="com.clyhs.beans.RoleAuthority"/>
+        </set>
+        
+	</class>
+	
+</hibernate-mapping>

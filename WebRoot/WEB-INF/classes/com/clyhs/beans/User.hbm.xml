@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.clyhs.beans.User" table="t_user">	
+	    
+		<id name="userId" column="user_id" type="integer">
+            <generator class="native"/>
+        </id>
+ 
+        <property name="userName" column="username" type="string" />
+        <property name="userPassword" column="password" type="string" />
+        <property name="userAccount"  column="account" type="string" />
+        <property name="userDesc" column="user_desc" type="string" />
+        <property name="userDuty" column="user_duty" type="string" />
+        <property name="subSystem" column="sub_system" type="string" />
+        <property name="userDept" column="user_dept" type="string" />
+        <property name="enabled"  column="enabled" type="boolean" precision="1" scale="0" />
+        <property name="issys"    column="issys" type="boolean" precision="1" scale="0" />
+        <set      name="userRole" inverse="true" cascade="all" lazy="false">
+            <key>
+                <column name="user_id"></column>
+            </key>
+            <one-to-many class="com.clyhs.beans.UserRole"/>
+        </set>
+        
+	</class>
+	
+</hibernate-mapping>

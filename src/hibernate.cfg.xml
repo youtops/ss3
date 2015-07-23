@@ -1,0 +1,35 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ssh2_ss3</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">123456</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- 配置缓存提供商 -->
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+		
+		<!-- 启用二级缓存，这也是它的默认配置 -->
+		<property name="hibernate.cache.use_second_level_cache">false</property>
+		
+		<!-- 开启查询缓存，默认不开启false -->
+        <property name="hibernate.cache.use_query_cache">false</property>
+        
+        <mapping resource="com/clyhs/beans/User.hbm.xml"/>
+        <mapping resource="com/clyhs/beans/Role.hbm.xml"/>
+        <mapping resource="com/clyhs/beans/Resource.hbm.xml"/>
+        <mapping resource="com/clyhs/beans/Authority.hbm.xml"/>
+        <mapping resource="com/clyhs/beans/UserRole.hbm.xml"/>
+        <mapping resource="com/clyhs/beans/RoleAuthority.hbm.xml"/>
+        <mapping resource="com/clyhs/beans/AuthorityResource.hbm.xml"/>
+
+		
+		
+	</session-factory>
+</hibernate-configuration>

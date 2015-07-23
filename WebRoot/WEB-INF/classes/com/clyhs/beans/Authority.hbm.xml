@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.clyhs.beans.Authority" table="t_authority">	
+	    
+		<id name="authorityId" column="authority_id" type="integer">
+            <generator class="native"/>
+        </id>
+ 
+        <property name="authorityName" column="authority_name" type="string" />
+
+        <property name="authorityDesc" column="authority_desc" type="string" />
+        <property name="module"   column="module" type="string" />
+        <property name="enabled"  column="enabled" type="boolean" precision="1" scale="0" />
+        <property name="issys"    column="issys" type="boolean" precision="1" scale="0" />
+        <set      name="roleAuthority" inverse="true" cascade="all" lazy="false">
+            <key>
+                <column name="authority_id"></column>
+            </key>
+            <one-to-many class="com.clyhs.beans.RoleAuthority"/>
+        </set>
+        <set      name="authorityResource" inverse="true" cascade="all" lazy="false">
+            <key>
+                <column name="authority_id"></column>
+            </key>
+            <one-to-many class="com.clyhs.beans.AuthorityResource"/>
+        </set>
+        
+        
+	</class>
+	
+</hibernate-mapping>
